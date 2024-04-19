@@ -1,0 +1,17 @@
+name: gg
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - readme
+env:
+  SCRIPT_REPO: ${{ github.repository }}
+  SCRIPT_REF: ${{ github.ref_name }}
+jobs:
+ test:
+  name: test
+  runs-on: alpine-latest
+  steps: 
+   - name: sss
+     run: |
+      echo ${SCRIPT_REPO}  ${SCRIPT_REF}
