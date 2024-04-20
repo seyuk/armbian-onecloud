@@ -14,4 +14,6 @@ jobs:
   steps: 
    - name: sss
      run: |
-      echo ${SCRIPT_REPO}  ${SCRIPT_REF}
+      TIME="$(curl https://api.github.com/repos/${SCRIPT_REPO}/actions/runs/${GITHUB_RUN_ID} | jq -r .created_at)"
+      TAG="ci-$(date -d "${TIME}" -u +'%Y%m%d-%H%M%S-%Z')"
+      echo ${TIME} ${TAG}
